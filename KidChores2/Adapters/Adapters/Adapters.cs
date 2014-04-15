@@ -90,7 +90,7 @@ namespace KidChores2.Adapters.Adapters
             }
             return model;
         }
-
+        //-----Room Adapters-----\\
         public DetailsRoomViewModel GetDetailsRoomViewModel(int id)
         {
             DetailsRoomViewModel model = new DetailsRoomViewModel();
@@ -111,6 +111,8 @@ namespace KidChores2.Adapters.Adapters
             Room Room = db.Rooms.Create();
             Room.RoomName = model.RoomName;
             db.Rooms.Add(Room);
+            //Creating the relationship in the KidRoom table between the two
+            //Tables.
             KidRoom kr = new KidRoom(){KidId = model.KidId, RoomId = Room.Id};
             db.KidRooms.Add(kr);
             db.SaveChanges();
@@ -123,9 +125,9 @@ namespace KidChores2.Adapters.Adapters
             model.Room = Room;
             model.RoomName = Room.RoomName;
             model.Kids = db.Kids.ToList();
-            model.SelectedKids = new List<Kid>();
-            model.KidRooms = db.KidRooms.Where(k => k.RoomId == id).ToList();
-            foreach (var kid in Room.KidRooms)
+            model.SelectedKids = new List<Kid>(); //Create empty list of type Kid
+            model.KidRooms = db.KidRooms.Where(k => k.RoomId == id).ToList(); 
+            foreach (var kid in model.KidRooms)
             {
                 model.SelectedKids.Add(kid.Kid);
             }
