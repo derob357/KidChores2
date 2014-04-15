@@ -23,10 +23,11 @@ namespace KidChores2.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public List<Room> Rooms { get; set; }
-        public List<Room> SelectedRooms { get; set; }
+
         public int RoomId { get; set; }
         public Kid Kid { get; set; }
+        public List<Room> Rooms { get; set; }
+        public List<Room> SelectedRooms { get; set; }
         public List<KidRoom> KidRooms { get; set; }
     }
 

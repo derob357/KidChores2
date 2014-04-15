@@ -32,6 +32,7 @@ namespace KidChores2.Adapters.Adapters
             Kid.LastName = model.LastName;
             db.Kids.Add(Kid);
             db.SaveChanges();
+            //Creating the relationship in the KidRoom table between the two tables.
             KidRoom KR = new KidRoom() { KidId = Kid.Id, RoomId = model.RoomId };
             db.KidRooms.Add(KR);
             db.SaveChanges();
@@ -119,15 +120,18 @@ namespace KidChores2.Adapters.Adapters
         public EditRoomViewModel GetEditRoomViewModel(int id)
         {
             Room Room = db.Rooms.Find(id);
-            EditRoomViewModel model = new EditRoomViewModel();
-            model.Room = Room;
-            model.RoomName = Room.RoomName;
-            model.Kids = db.Kids.ToList();
-            model.SelectedKids = new List<Kid>();
+            EditRoomViewModel model = new EditRoomViewModel();//Instantiate the model
+            model.Room = Room;//add the room gotten on Ln123 to the model
+            model.RoomName = Room.RoomName;//add the RoomName gotten on Ln123 to the model
+            model.Kids = db.Kids.ToList();//add the all Kids to the model
+            model.SelectedKids = new List<Kid>();//Create an empty list of type Kid
+
+            //fill the KidRooms list in the model with all the kids that have been added to the 
+            //Room from the KidRooms table
             model.KidRooms = db.KidRooms.Where(k => k.RoomId == id).ToList();
-            foreach (var kid in Room.KidRooms)
+            foreach (var kr in Room.KidRooms)
             {
-                model.SelectedKids.Add(kid.Kid);
+                model.SelectedKids.Add(kr.Kid);
             }
             return model;
         }
@@ -149,8 +153,8 @@ namespace KidChores2.Adapters.Adapters
             model.SelectedKids.Add(db.Kids.Find(model.KidId));
             foreach (var kid in model.SelectedKids)
             {
-                db.KidRooms.AddOrUpdate(k => new { k.KidId, k.RoomId },
-                    new KidRoom { KidId = kid.Id, RoomId = id }
+                db.KidRooms.AddOrUpdate(k => new { k.KidId, k.RoomId },//key that we use to determine which entry to update
+                    new KidRoom { KidId = kid.Id, RoomId = id }//update the entry to this...
                     );
             }
             db.SaveChanges();

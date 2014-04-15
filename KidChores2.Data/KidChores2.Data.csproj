@@ -47,9 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KidChore2ContextData.cs" />
-    <Compile Include="Migrations\201404150202425_InitialMigration.cs" />
-    <Compile Include="Migrations\201404150202425_InitialMigration.Designer.cs">
-      <DependentUpon>201404150202425_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201404151503380_initialBuild.cs" />
+    <Compile Include="Migrations\201404151503380_initialBuild.Designer.cs">
+      <DependentUpon>201404151503380_initialBuild.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,8 +66,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201404150202425_InitialMigration.resx">
-      <DependentUpon>201404150202425_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201404151503380_initialBuild.resx">
+      <DependentUpon>201404151503380_initialBuild.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

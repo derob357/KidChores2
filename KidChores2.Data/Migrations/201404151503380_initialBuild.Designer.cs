@@ -7,13 +7,13 @@ namespace KidChores2.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.0-20911")]
-    public sealed partial class InitialMigration : IMigrationMetadata
+    public sealed partial class initialBuild : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initialBuild));
         
         string IMigrationMetadata.Id
         {
-            get { return "201404150202425_InitialMigration"; }
+            get { return "201404151503380_initialBuild"; }
         }
         
         string IMigrationMetadata.Source
