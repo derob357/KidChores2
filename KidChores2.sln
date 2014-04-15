@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KidChores2", "KidChores2\KidChores2.csproj", "{F44448A9-83B7-41AE-BD2F-A25603C00B4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KidChores2.Data", "KidChores2.Data\KidChores2.Data.csproj", "{1B4A62C8-ADCC-4552-B6E5-2CC1DF5CBB64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KidChores2.DataModels", "KidChores2.Data.Models\KidChores2.DataModels.csproj", "{6F6B5C17-818E-4527-B71F-C5B290D67626}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F44448A9-83B7-41AE-BD2F-A25603C00B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F44448A9-83B7-41AE-BD2F-A25603C00B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F44448A9-83B7-41AE-BD2F-A25603C00B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F44448A9-83B7-41AE-BD2F-A25603C00B4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B4A62C8-ADCC-4552-B6E5-2CC1DF5CBB64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B4A62C8-ADCC-4552-B6E5-2CC1DF5CBB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B4A62C8-ADCC-4552-B6E5-2CC1DF5CBB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B4A62C8-ADCC-4552-B6E5-2CC1DF5CBB64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F6B5C17-818E-4527-B71F-C5B290D67626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F6B5C17-818E-4527-B71F-C5B290D67626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F6B5C17-818E-4527-B71F-C5B290D67626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F6B5C17-818E-4527-B71F-C5B290D67626}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

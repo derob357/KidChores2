@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Children</h1>
+</div>
+
+<div>
+    <h4>
+        <span style="text-align-last:right">
+            @Html.ActionLink("Click to add a Kid", "CreateKid") <br />
+            @Html.ActionLink("Click to add a Room", "CreateRoom")
+        </span>
+    </h4>
+</div>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            <b>First Name</b>
+        </th>
+        <th>
+            <b>Last Name</b>
+        </th>
+        <th>
+            <b>Details | Edit | Delete</b>
+        </th>
+    </tr>
+
+    @foreach (var kid in Model.Kids)
+    {
+        <tr>
+            <td>@kid.FirstName</td>
+            <td>@kid.LastName</td>
+            <td>
+                @Html.ActionLink("Detail", "DetailKid", new { id = kid.Id }) | @Html.ActionLink("Edit", "EditKid", new { id = kid.Id }) | <a href="~/home/DeleteKid/@kid.Id" onclick="return confirm('Are you sure you want to delete @kid.FirstName @kid.LastName ?')">Delete</a>
+            </td>
+        </tr>
+    }
+</table> 

@@ -1,0 +1,23 @@
+﻿@model KidChores2.Models.DetailsKidViewModel
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<h3><b>@Model.FirstName @Model.LastName</b></h3>
+
+<h4>
+    <ul>
+        @foreach (var room in Model.Rooms)
+        {
+            <li>@room.RoomName | @Html.ActionLink("Details", "DetailRoom", new { id = room.Id }) | @Html.ActionLink("Edit", "EditRoom", new { id = room.Id }) | <a href="~/home/DeleteRoom/@room.Id" onclick="return confirm('Are you sure you want to delete @room.RoomName ?')">Delete</a> </li>
+        }
+    </ul>
+</h4>
+
+<h4>
+    <p>
+        @Html.ActionLink("Back to Index", "Index")
+    </p>
+</h4>
