@@ -49,6 +49,7 @@ namespace KidChores2.Models
     public class CreateRoomViewModel
     {
         public string RoomName { get; set; }
+        public List<Room> Rooms { get; set; }
         public List<Kid> Kids { get; set; }
         public int KidId { get; set; }
         public List<KidRoom> KidRooms { get; set; }

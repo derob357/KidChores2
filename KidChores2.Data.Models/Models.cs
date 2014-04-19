@@ -11,14 +11,14 @@ namespace KidChores2.DataModels
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public List<KidRoom> KidRooms { get; set; }
+  //public List<KidRoom> KidRooms { get; set; }//When we serialize with JSON you will have to remove this list
     }
 
     public class Room
     {
         public int Id { get; set; }
         public string RoomName { get; set; }
-        public List<KidRoom> KidRooms { get; set; }
+     //   public List<KidRoom> KidRooms { get; set; }//When we serialize with JSON you will have to remove this list
     }
 
     public class KidRoom

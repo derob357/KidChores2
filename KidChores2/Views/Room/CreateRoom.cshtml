@@ -1,0 +1,18 @@
+﻿@model List<KidChores2.DataModels.Kid>
+@{
+    ViewBag.Title = "CreateRoom";
+}
+
+<h2>CreateRoom</h2>
+<form action="/home/CreateRoom" method="post">
+    <label>Room Name:</label>
+    <input type="text" name="RoomName" placeholder="Room Name" /><br />
+    <label>Kid to Assign: </label>
+    <select name="KidId">
+        @foreach (var kid in Model)
+        {
+            <option value="@kid.Id">@kid.FirstName @kid.LastName</option>
+        }
+    </select><br />
+    <input type="submit" name="Submit" value="Create Room" />
+</form>

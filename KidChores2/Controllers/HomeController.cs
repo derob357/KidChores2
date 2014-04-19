@@ -67,46 +67,6 @@ namespace KidChores2.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public ActionResult CreateRoom()
-        {
-            return View(_homeAdapter.GetKids());
-        }
 
-        [HttpPost]
-        public ActionResult CreateRoom(CreateRoomViewModel model)
-        {
-            _homeAdapter.AddRoomViewModel(model);
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        public ActionResult EditRoom(int id)
-        {
-            EditRoomViewModel model = new EditRoomViewModel();
-            model = _homeAdapter.GetEditRoomViewModel(id);
-            return View(model);
-        }
-
-        [HttpPost]
-        public ActionResult EditRoom(int id, EditRoomViewModel model)
-        {
-            _homeAdapter.SaveRoomViewModel(id, model);
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        public ActionResult DeleteRoom(int id)
-        {
-            _homeAdapter.GetDeleteRoomViewModel(id);
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        public ActionResult DetailRoom(int id)
-        {
-            DetailsRoomViewModel model = _homeAdapter.GetDetailsRoomViewModel(id);
-            return View(model);
-        }
     }
 }

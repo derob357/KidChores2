@@ -1,0 +1,40 @@
+﻿@model KidChores2.Models.DetailsRoomViewModel
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<h3><b>@Model.RoomName</b></h3>
+<table>
+    <tr>
+        <th><b>Name</b></th>
+        <th><b>Details | Edit | Delete</b></th>
+    </tr>
+
+    @foreach (var kid in Model.Kids)
+    {
+    <tr>
+        @*<ul>
+            <li>*@
+        <td><h4>@kid.FirstName @kid.LastName  </h4></td> |
+        <td>&nbsp;
+            <button class="btn btn-default btn-xs" onclick="location.href='@Url.Action("DetailKid", "Home", new { id = kid.Id })'">Details</button>
+            |
+            <button class="btn btn-default btn-xs edit" onclick="location.href='@Url.Action("EditKid", "Home", new { id = kid.Id })'">Edit</button>
+            |
+            <button class="btn btn-danger btn-xs" onclick="location.href='@Url.Action("DeleteKid", "Home", new { id = kid.Id })'">Delete</button>
+        </td>
+        @*<a href="~/home/DeleteKids/@kid.Id" onclick="return confirm('Are you sure you want to delete @kid.FirstName @kid.LastName ?')">Delete</a>*@
+        @*</li>*@
+    </tr>
+    }
+    @*</ul>*@
+
+</table>
+<h4>
+    <p>
+        @Html.ActionLink("Edit", "EditRoom", new { id = @Model.RoomId })
+        @Html.ActionLink("Back to Index", "Index")
+    </p>
+</h4>

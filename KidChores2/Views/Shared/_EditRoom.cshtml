@@ -1,0 +1,30 @@
+﻿<h2>EditRoom</h2>
+
+<form action="/home/EditRoom/@Model.Room.Id" method="post">
+    <input type="text" name="RoomName" value="@Model.RoomName" /><br />
+    <label>Kid to Assign: </label>
+    <select name="KidId">
+        @foreach (var kid in Model.Kids)
+        {
+            if (kid.Id == @Model.KidId)
+            {
+                <option selected value="@kid.Id">@kid.FirstName @kid.LastName</option>
+            }
+            else
+            {
+                <option value="@kid.Id">@kid.FirstName @kid.LastName</option>
+            }
+        }
+    </select> <br />
+    <label>Current Kids: </label>
+    <ul>
+        @foreach (var kid in @Model.KidRooms)
+        {
+            <li>@kid.Kid.FirstName @kid.Kid.LastName| @Html.ActionLink("Edit", "EditKid", new { id = kid.Kid.Id }) | <a href="~/home/DeleteKid/@kid.Kid.Id" onclick="return confirm('Are you sure you want to delete @kid.Kid.FirstName @kid.Kid.LastName ?')">>Delete</a> </li>
+        }
+    </ul>
+    <input type="submit" name="Submit" value="Save Changes" />
+</form>
+<div>
+    @Html.ActionLink("Back to Index", "Index")
+</div>

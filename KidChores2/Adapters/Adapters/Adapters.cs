@@ -44,9 +44,15 @@ namespace KidChores2.Adapters.Adapters
             model.Kid = Kid;
             model.FirstName = Kid.FirstName;
             model.LastName = Kid.LastName;
-            model.Rooms = db.Rooms.ToList();
+            model.Rooms = db.Rooms.ToList();//a list of all rooms
+
+            //instantiates a list, that is empty at this point
             model.SelectedRooms = new List<Room>();
+
+            //queries the KidRooms table to retrieve the related rows
+            //that contain the Room id passed in (a list of the kids in that room is located there
             model.KidRooms = db.KidRooms.Where(k => k.KidId == id).ToList();
+            //loops through KidRooms adds the Room to the SelectedRooms List
             foreach (var room in model.KidRooms)
             {
                 model.SelectedRooms.Add(room.Room);
@@ -90,50 +96,6 @@ namespace KidChores2.Adapters.Adapters
             }
             return model;
         }
-        //-----Room Adapters-----\\
-        public DetailsRoomViewModel GetDetailsRoomViewModel(int id)
-        {
-            DetailsRoomViewModel model = new DetailsRoomViewModel();
-            Room room = db.Rooms.Find(id);
-            model.RoomName = room.RoomName;
-            model.RoomId = room.Id;
-            model.Kids = new List<Kid>();
-            model.KidRooms = db.KidRooms.Where(k => k.RoomId == id).ToList();
-            foreach (var kid in model.KidRooms)
-            {
-                model.Kids.Add(kid.Kid);
-            }
-            return model;
-        }
-
-        public void AddRoomViewModel(CreateRoomViewModel model)
-        {
-            Room Room = db.Rooms.Create();
-            Room.RoomName = model.RoomName;
-            db.Rooms.Add(Room);
-            //Creating the relationship in the KidRoom table between the two
-            //Tables.
-            KidRoom kr = new KidRoom(){KidId = model.KidId, RoomId = Room.Id};
-            db.KidRooms.Add(kr);
-            db.SaveChanges();
-        }
-
-        public EditRoomViewModel GetEditRoomViewModel(int id)
-        {
-            Room Room = db.Rooms.Find(id);
-            EditRoomViewModel model = new EditRoomViewModel();
-            model.Room = Room;
-            model.RoomName = Room.RoomName;
-            model.Kids = db.Kids.ToList();
-            model.SelectedKids = new List<Kid>(); //Create empty list of type Kid
-            model.KidRooms = db.KidRooms.Where(k => k.RoomId == id).ToList(); 
-            foreach (var kid in model.KidRooms)
-            {
-                model.SelectedKids.Add(kid.Kid);
-            }
-            return model;
-        }
-
         public List<Kid> GetKids()
         {
             return db.Kids.ToList();
@@ -143,27 +105,7 @@ namespace KidChores2.Adapters.Adapters
         {
             return db.Rooms.ToList();
         }
-
-        public void SaveRoomViewModel(int id, EditRoomViewModel model)
-        {
-            Room Room = db.Rooms.Find(id);
-            Room.RoomName = model.RoomName;
-            model.SelectedKids.Add(db.Kids.Find(model.KidId));
-            foreach (var kid in model.SelectedKids)
-            {
-                db.KidRooms.AddOrUpdate(k => new { k.KidId, k.RoomId },
-                    new KidRoom { KidId = kid.Id, RoomId = id }
-                    );
-            }
-            db.SaveChanges();
-        }
-
-        public void GetDeleteRoomViewModel(int id)
-        {
-            Room room = db.Rooms.Find(id);
-            db.Rooms.Remove(room);
-            db.SaveChanges();
-        }
+      
     }
 
 }
