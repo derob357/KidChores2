@@ -11,7 +11,7 @@
     <ul>
         @foreach (var room in Model.Rooms)
         {
-            <li>@room.RoomName | @Html.ActionLink("Details", "DetailRoom", new { id = room.Id }) | @Html.ActionLink("Edit", "EditRoom", new { id = room.Id }) | <a href="~/home/DeleteRoom/@room.Id" onclick="return confirm('Are you sure you want to delete @room.RoomName ?')">Delete</a> </li>
+            <li>@room.RoomName | @Html.ActionLink("Details", "DetailRoom", new {controller=room, id = room.Id }) | @Html.ActionLink("Edit", "EditRoom", new {controller=room, id = room.Id }) | <a href="~/Room/DeleteRoom/@room.Id" onclick="return confirm('Are you sure you want to delete @room.RoomName ?')">Delete</a> </li>
         }
     </ul>
 </h4>
@@ -26,7 +26,7 @@
     ViewBag.Title = "Detail";
 }
 
-<h2>Detail</h2>
+@*<h2>Detail</h2>
 
 <h3><b>@Model.RoomName</b></h3>
 <table>
@@ -61,4 +61,4 @@
         @Html.ActionLink("Edit", "EditRoom", new { id = @Model.RoomId })
         @Html.ActionLink("Back to Index", "Index")
     </p>
-</h4>
+</h4>*@

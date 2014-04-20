@@ -58,6 +58,12 @@ namespace KidChores2.Adapters.Adapters
         {
             Room Room = db.Rooms.Find(id);
             Room.RoomName = model.RoomName;
+            model.SelectedKids = new List<Kid>(); //Create empty list of type Kid
+            model.KidRooms = db.KidRooms.Where(k => k.RoomId == id).ToList();
+            foreach (var kid in model.KidRooms)
+            {
+                model.SelectedKids.Add(kid.Kid);
+            }
             model.SelectedKids.Add(db.Kids.Find(model.KidId));
             foreach (var kid in model.SelectedKids)
             {
